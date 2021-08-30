@@ -8,12 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         Height: DataTypes.DOUBLE,
         Weight: DataTypes.DOUBLE,
         Status: DataTypes.STRING,
-        Productivity: DataTypes.DOUBLE,
-        Coordinate_Lat: DataTypes.DOUBLE,
-        Coordinate_Long: DataTypes.DOUBLE,
-        AccData_X: DataTypes.DOUBLE,
-        AccData_Y: DataTypes.DOUBLE,
-        AccData_Z: DataTypes.DOUBLE
+        Breed: DataTypes.STRING,
+        Nick: DataTypes.STRING
     })
     return Cows
 }

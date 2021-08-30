@@ -3,7 +3,6 @@ const {Cows} = require('../models')
 module.exports = {
     async post (req, res) {
         try {
-          console.log(req.body)
           const Cow = await Cows.create(req.body)
           
           res.send(Cow)
@@ -17,7 +16,7 @@ module.exports = {
       async get (req, res) {
         try {
           Cow = await Cows.findAll({
-            limit: 10
+            limit: 100
           })
           res.send(Cow)
         }
@@ -29,9 +28,11 @@ module.exports = {
       },
       async show (req, res) {
         try {
-          console.log(req.params.CowID)
-          const Cow = await Cows.findByPk(req.params.CowID)
-          console.log(Cow)
+          const Cow = await Cows.findAll(
+            {
+              where: {
+                CowID: req.params.CowID
+              }})
           res.send(Cow)
         } catch (err) {
           res.status(500).send({
@@ -58,7 +59,7 @@ module.exports = {
           const {CowID} = req.params
           const cow = await Cows.findOne({
             where: {
-              id: CowID
+              CowID: {CowID}
             }
           })
           if (!cow) {
