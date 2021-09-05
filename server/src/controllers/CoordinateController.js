@@ -17,7 +17,7 @@ module.exports = {
       async get (req, res) {
         try {
           Coordinate = await Coordinates.findAll({
-            limit: 100
+            limit: 100000
           })
           res.send(Coordinate)
         }

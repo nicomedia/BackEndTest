@@ -16,7 +16,7 @@ module.exports = {
       async get (req, res) {
         try {
           Milk = await Milks.findAll({
-            limit: 100
+            limit: 100000
           })
           res.send(Milk)
         }

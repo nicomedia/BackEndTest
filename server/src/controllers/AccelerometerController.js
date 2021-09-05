@@ -16,7 +16,7 @@ module.exports = {
       async get (req, res) {
         try {
           Accelerometer = await Accelerometers.findAll({
-            limit: 100
+            limit: 100000
           })
           res.send(Accelerometer)
         }

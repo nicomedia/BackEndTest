@@ -2,6 +2,7 @@ var mqtt=require('mqtt');
 var http = require('http');
 const {Coordinates} = require('./models')
 const {Accelerometers} = require('./models');
+const { Serializer } = require('v8');
 
 
 module.exports =  {
@@ -20,6 +21,8 @@ module.exports =  {
             var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0044a96/up";
         
             client.subscribe(topic_s,{qos:0});
+
+            console.log("Connected")
         
         })
         
@@ -28,19 +31,25 @@ module.exports =  {
             var jsonMsg = JSON.parse(message)
             var decodedPayload = jsonMsg.uplink_message.decoded_payload;
 
-
+            console.log(decodedPayload)
             var Crdnt = {}
-            Crdnt.CowID = parseInt(decodedPayload.CowID)
-            Crdnt.Coordinate_Lat = parseFloat (decodedPayload.latitude)
-            Crdnt.Coordinate_Long = parseFloat (decodedPayload.longitude)
-            Coordinates.create(Crdnt)
+            if(decodedPayload != null){
+                Crdnt.CowID = parseInt(decodedPayload.CowID)
+                Crdnt.Coordinate_Lat = parseFloat (decodedPayload.latitude)
+                Crdnt.Coordinate_Long = parseFloat (decodedPayload.longitude)
+                Coordinates.create(Crdnt)
 
-            var ACC = {}
-            ACC.CowID = parseInt(decodedPayload.CowID)
-            ACC.AccData_X = parseFloat (decodedPayload.acc_X)
-            ACC.AccData_Y = parseFloat (decodedPayload.acc_Y)
-            ACC.AccData_Z = parseFloat (decodedPayload.acc_Z)
-            Accelerometers.create(ACC)
+                console.log(Crdnt.CowID + " : " + Crdnt.Coordinate_Lat + " - " + Crdnt.Coordinate_Long)
+
+                var ACC = {}
+                ACC.CowID = parseInt(decodedPayload.CowID)
+                ACC.AccData_X = parseFloat (decodedPayload.acc_X)
+                ACC.AccData_Y = parseFloat (decodedPayload.acc_Y)
+                ACC.AccData_Z = parseFloat (decodedPayload.acc_Z)
+                Accelerometers.create(ACC)
+            }
+            
+            
 
             // var options = {
             //     host: 'localhost',
