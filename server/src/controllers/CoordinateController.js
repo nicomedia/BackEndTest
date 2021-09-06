@@ -3,7 +3,6 @@ const {Coordinates} = require('../models')
 module.exports = {
     async post (req, res) {
         try {
-          console.log(req.body)
           const Coordinate = await Coordinates.create(req.body)
           
           res.send(Coordinate)

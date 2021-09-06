@@ -31,13 +31,24 @@ module.exports =  {
             var jsonMsg = JSON.parse(message)
             var decodedPayload = jsonMsg.uplink_message.decoded_payload;
 
-            console.log(decodedPayload)
             var Crdnt = {}
             if(decodedPayload != null){
                 Crdnt.CowID = parseInt(decodedPayload.CowID)
                 Crdnt.Coordinate_Lat = parseFloat (decodedPayload.latitude)
                 Crdnt.Coordinate_Long = parseFloat (decodedPayload.longitude)
-                Coordinates.create(Crdnt)
+                if (Crdnt.Coordinate_Long == 0 && Crdnt.Coordinate_Lat == 0)
+                {
+                    console.log("GPS Data not valid")
+                }
+                else
+                {
+                    Coordinates.update(Crdnt, {
+                        where: {
+                          CowID: Crdnt.CowID
+                        }
+                    })
+                }
+                
 
                 console.log(Crdnt.CowID + " : " + Crdnt.Coordinate_Lat + " - " + Crdnt.Coordinate_Long)
 
