@@ -43,7 +43,7 @@ module.exports = {
         try {
           await Cows.update(req.body, {
             where: {
-              id: req.params.CowID
+              CowID: req.params.CowID
             }
           })
           res.send(req.body)
