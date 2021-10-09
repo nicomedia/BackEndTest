@@ -18,9 +18,95 @@ module.exports =  {
         
         client.on("connect",function(){	
         
-            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0044a96/up";
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045601/up";
         
             client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045602/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045605/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045606/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045607/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045608/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045609/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed004560c/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed004560e/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed004560f/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045610/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045611/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045612/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045613/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045615/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045616/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed0045618/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed004561a/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+            var topic_s="v3/fintes-esp32-1@ttn/devices/eui-70b3d57ed004561c/up";
+        
+            client.subscribe(topic_s,{qos:0});
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
             console.log("Connected")
         
@@ -42,11 +128,7 @@ module.exports =  {
                 }
                 else
                 {
-                    Coordinates.update(Crdnt, {
-                        where: {
-                          CowID: Crdnt.CowID
-                        }
-                    })
+                    Coordinates.create(Crdnt)
                 }
                 
 

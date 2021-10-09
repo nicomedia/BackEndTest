@@ -4,12 +4,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             unique: true
           },
-        Age: DataTypes.INTEGER,
-        Height: DataTypes.DOUBLE,
-        Weight: DataTypes.DOUBLE,
+        KupeNo: DataTypes.DOUBLE,
+        BirthDate: DataTypes.STRING,        
+        FertDate: DataTypes.STRING,
         Status: DataTypes.STRING,
         Breed: DataTypes.STRING,
-        Nick: DataTypes.STRING
+        Weight: DataTypes.DOUBLE
     })
     return Cows
 }
